@@ -13,9 +13,11 @@ function App() {
 
   //Hook useState enviar um resquest para API Usando AXIOS
   const [data, setData]=useState([]);
+  const [updateData, setUpdateData]=useState(true);
 
   const [modalIncluir, setModalIncluir]=useState(false);
   const [modalEditar, setModalEditar]=useState(false);
+  const [modalExcluir, setModalExcluir]=useState(false);
 
   const [alunoSelecionado, setAlunoSelecionado]=useState(
   {
@@ -34,6 +36,10 @@ function App() {
     setModalEditar(!modalEditar);
   }
 
+  const abrirFecharModalExcluir=()=>{
+    setModalExcluir(!modalExcluir);
+  }
+
   //Metodo para trazer uma resquest para API Usando AXIOS
   const pedidoGet = async() =>{
     await axios.get(baseUrl)
@@ -50,6 +56,7 @@ const pedidoPost=async()=>{
     await axios.post(baseUrl, alunoSelecionado)
   .then(response=>{
     setData(data.concat(response.data));
+    setUpdateData(true);
     abrirFecharModalIncluir();
   }).catch(error=>{
     console.log(error);
@@ -64,27 +71,41 @@ const pedidoPut=async()=>{
     var dadosAuxiliar=data;
     dadosAuxiliar.map(aluno=>{
       if(aluno.id === alunoSelecionado.id){
-        aluno.nome = resposta.nomw;
+        aluno.nome = resposta.nome;
         aluno.email = resposta.email;
         aluno.idade = resposta.idade;
       }
     });
+    setUpdateData(true);
     abrirFecharModalEditar();
   }).catch(error=>{
     console.log(error);
   })
 }
 
+const pedidoDelete=async()=>{
+  await axios.delete(baseUrl+"/"+alunoSelecionado.id)
+    .then(response => {
+      setData(data.filter(aluno => aluno.id !== response.data));
+      setUpdateData(true);
+      abrirFecharModalExcluir();
+    }).catch(error => {
+      console.log(error);
+    })
+}
+
 const selecionarAluno = (aluno, opcao) =>{
   setAlunoSelecionado(aluno);
-  (opcao === "Editar") && 
-    abrirFecharModalEditar();
+  (opcao === "Editar") ? abrirFecharModalEditar() : abrirFecharModalExcluir();
 }
   
   //Hook useEffect
   useEffect(()=>{
-    pedidoGet();
-  })
+    if (updateData){
+      pedidoGet();
+      setUpdateData(false);
+    }
+  }, [updateData])
 
 
   const handleChange=e=>{
@@ -135,15 +156,15 @@ const selecionarAluno = (aluno, opcao) =>{
             <div className='form-group'>
               <label>Nome: </label>
               <br/>
-              <input type='text' className='Form-control' name='nome' onChange={handleChange}/>
+              <input type='text' className='form-control' name='nome' onChange={handleChange}/>
               <br/>
               <label>Email: </label>
               <br/>
-              <input type='text' className='Form-control'name='email' onChange={handleChange}/>
+              <input type='text' className='form-control'name='email' onChange={handleChange}/>
               <br/>
               <label>Idade: </label>
               <br/>
-              <input type='text' className='Form-control'name='idade' onChange={handleChange}/>
+              <input type='text' className='form-control'name='idade' onChange={handleChange}/>
               <br/>
             </div>
         </ModalBody>
@@ -161,17 +182,17 @@ const selecionarAluno = (aluno, opcao) =>{
               <input type='text' className='form-control' readOnly value={alunoSelecionado && alunoSelecionado.id}></input><br/>
               <label>Nome: </label>
               <br/>
-              <input type='text' className='Form-control' name='nome' onChange={handleChange}
+              <input type='text' className='form-control' name='nome' onChange={handleChange}
               value={alunoSelecionado && alunoSelecionado.nome}/>
               <br/>
               <label>Email: </label>
               <br/>
-              <input type='text' className='Form-control'name='email' onChange={handleChange}
+              <input type='text' className='form-control'name='email' onChange={handleChange}
               value={alunoSelecionado && alunoSelecionado.email}/>
               <br/>
               <label>Idade: </label>
               <br/>
-              <input type='text' className='Form-control'name='idade' onChange={handleChange}
+              <input type='text' className='form-control'name='idade' onChange={handleChange}
               value={alunoSelecionado && alunoSelecionado.idade}/>
               <br/>
             </div>
@@ -179,6 +200,17 @@ const selecionarAluno = (aluno, opcao) =>{
         <ModalFooter>
           <button className='btn btn-primary' onClick={()=>pedidoPut()}>Editar</button>{" "}
           <button className='btn btn-danger' onClick={()=>abrirFecharModalEditar()}>Cancelar</button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modalExcluir}>
+        <ModalBody>
+          Confirmar a Exclusão deste(a) aluno(a) : {alunoSelecionado && alunoSelecionado.nome} ?
+        </ModalBody>
+
+        <ModalFooter>
+          <button className='btn btn-danger' onClick={()=>pedidoDelete()}>Sim</button>
+          <button className='btn btn-secondary' onClick={()=>abrirFecharModalExcluir()}>Não</button>
         </ModalFooter>
       </Modal>
     </div>
