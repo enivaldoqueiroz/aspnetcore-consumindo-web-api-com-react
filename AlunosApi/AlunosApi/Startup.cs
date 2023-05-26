@@ -1,5 +1,6 @@
 using AlunosApi.Controllers;
 using AlunosApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,10 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AlunosApi
@@ -37,7 +40,26 @@ namespace AlunosApi
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            //Autenticação JWT - Registro e habilito a autenticação
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options => 
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+
+            //Adicionar toda vez que for criado uma Interface
+            services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<IAlunoService, AlunoService>();
+            services.AddCors();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -67,6 +89,9 @@ namespace AlunosApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //Autenticação deve ficar entre o Routing e Autorização 
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -114,3 +114,4 @@ D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\Alun
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.pdb
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.genruntimeconfig.cache
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.csproj.AssemblyReference.cache
+D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
