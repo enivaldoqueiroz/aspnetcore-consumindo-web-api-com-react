@@ -79,7 +79,6 @@ D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\Alun
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
-D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -113,5 +112,5 @@ D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\Alun
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\ref\AlunosApi.dll
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.pdb
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.genruntimeconfig.cache
-D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\obj\Debug\net5.0\AlunosApi.csproj.AssemblyReference.cache
 D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\C-CHARP DOTNET\WEB API COM REACT\aspnetcore-consumindo-web-api-com-react\AlunosApi\AlunosApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
