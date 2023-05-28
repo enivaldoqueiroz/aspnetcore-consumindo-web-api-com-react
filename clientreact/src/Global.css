@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+
+* {
+    margin: 5;
+    padding: 5;
+    outline: 5;
+    box-sizing: border-box;
+}
+
+body {
+    font: 300 14px Oswald, sans-serif;
+    background: #f0f0f5;
+    -webkit-font-smoothing: antialiased;
+}
