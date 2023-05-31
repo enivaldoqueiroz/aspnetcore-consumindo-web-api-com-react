@@ -3,7 +3,7 @@ import './styles.css';
 
 import logoCadastro from '../../assets/icon-cadastro.png';
 import { Link } from 'react-router-dom';
-import { FiXCircle } from 'react-icons/fi';
+import { FiXCircle, FiEdit, FiUserX } from 'react-icons/fi';
 
 export default function Alunos(){
     return(
@@ -23,6 +23,30 @@ export default function Alunos(){
                 </button>
             </form>
             <h1>Relação de Alunos</h1>
+            <ul>
+                <li>
+                    <b>Nome: </b>Paulo<br></br>
+                    <b>Email: </b>paulo@email.com<p></p>
+                    <b>Idade: </b>22<b></b>
+                    <button type='button'>
+                        <FiEdit size={25} color='#17202a'></FiEdit>
+                    </button>
+                    <button>
+                        <FiUserX size={25} color='#17202a'></FiUserX>
+                    </button>
+                </li>
+                <li>
+                    <b>Nome: </b>Paulo<br></br>
+                    <b>Email: </b>paulo@email.com<p></p>
+                    <b>Idade: </b>22<b></b>
+                    <button type='button'>
+                        <FiEdit size={25} color='#17202a'></FiEdit>
+                    </button>
+                    <button>
+                        <FiUserX size={25} color='#17202a'></FiUserX>
+                    </button>
+                </li>
+            </ul>
         </div>
     )
 }
