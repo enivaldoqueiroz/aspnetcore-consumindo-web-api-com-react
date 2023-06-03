@@ -10,7 +10,7 @@ export default function RoutesComponents(){
             <Routes>
                 <Route path="/" exact Component={Login}/>
                 <Route path="/alunos" Component={Alunos}/>
-                <Route path="/alunos/aluno/novo/:alunoid" Component={NovoAluno}/>
+                <Route path="/alunos/aluno/novo/:alunoId" Component={NovoAluno}/>
             </Routes>
         </BrowserRouter>
     );
